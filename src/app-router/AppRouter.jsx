@@ -15,7 +15,7 @@ import Navbar from '../components/Navbar'
 const AppRouter = () => {
   return (
     <BrowserRouter>
-        {/* <Navbar/> */}
+        <Navbar/>
         <Routes>
           <Route path='/' element={<Dashboard/>}/>
           <Route path='/about/:id' element={<About/>}/>
