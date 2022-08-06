@@ -17,9 +17,9 @@ const Register = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div style={{margin : "50px", 'borderRadius':'5px'}}>
       <div className="form-image d-none d-md-block ">
-        <img src={'https://picsum.photos/800/800'} alt="sample-movie" />
+        <img src={'https://picsum.photos/800/800'} alt="background-image" />
       </div>
       <div className="register-form">
         <h1 className="form-title display-3 ">Register</h1>

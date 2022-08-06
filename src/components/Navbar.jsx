@@ -22,7 +22,7 @@ export default function MenuAppBar() {
     setAnchorEl(null);
   };
 
-  const currentUser = {displayName:"Asım BOĞA"}
+  const currentUser = { displayName: "Asım BOĞA" };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -32,8 +32,8 @@ export default function MenuAppBar() {
               Asım Blog
             </Link>
           </Typography>
-          {auth && (
-            <div style={{ display: "inline" }}>
+          {currentUser ? (
+            <>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -59,17 +59,78 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={
-                  () => {navigate("login") ; setAnchorEl(null)
-                }}>Login</MenuItem>
-                <MenuItem onClick={() => {navigate("register") ; setAnchorEl(null) }}>
-                  Register
+                <MenuItem
+                  onClick={() => {
+                    navigate("profile");
+                    setAnchorEl(null);
+                  }}
+                >
+                  Profile
                 </MenuItem>
-                <MenuItem onClick={() => {navigate("profile") ; setAnchorEl(null)}}>Profile</MenuItem>
-                <MenuItem onClick={() => {navigate("newblog"); setAnchorEl(null)}}>NewBlog</MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    navigate("newblog");
+                    setAnchorEl(null);
+                  }}
+                >
+                  New Blog
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    navigate("logout");
+                    setAnchorEl(null);
+                  }}
+                >
+                  Logout
+                </MenuItem>
               </Menu>
               <h5>{currentUser.displayName}</h5>
-            </div>
+            </>
+          ) : (
+            <>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem
+                  onClick={() => {
+                    navigate("login");
+                    setAnchorEl(null);
+                  }}
+                >
+                  Login
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    navigate("register");
+                    setAnchorEl(null);
+                  }}
+                >
+                  Register
+                </MenuItem>
+              </Menu>
+            </>
           )}
         </Toolbar>
       </AppBar>
